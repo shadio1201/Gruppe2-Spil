@@ -24,10 +24,10 @@ function highScoreDisplay(){
 }
 highScoreDisplay()
 
-function tuncount(){
+function turncount(){
     turnCountHTML.innerHTML=`turn: ${count}`
 }
-tuncount()
+turncount()
 
 function arrayGeneration () {
     for (a=0; a<50; a++) {
@@ -67,7 +67,7 @@ playerScore()
 turnText.innerHTML = `player 1 turn`;
 function switchPlayer () {
     if (!turn) {
-        player = 'player1'
+        player = 'layer1'
         turnText.innerHTML = `player 1 turn`;
         turn = !turn
         count ++
@@ -77,7 +77,7 @@ function switchPlayer () {
         turn = !turn
         count ++
     }
-    tuncount()
+    turncount()
     console.log(turn)
 }
 
@@ -111,7 +111,7 @@ function cardclick(e) {
             playerScore()
             highScoreCalculator()
             Array.from(allCards).forEach(card=> {
-            card.style.color = "black"
+            card.style.color = "transparent"
             })
             }, 1000)
     } else {
@@ -119,7 +119,7 @@ function cardclick(e) {
         firstValue.style.pointerEvents = "auto"
         firstValue.style.cursor ="pointer"
         setTimeout(()=>{Array.from(allCards).forEach(card=> {
-            card.style.color = "black"
+            card.style.color = "transparent"
         })},1000)
         firstValue = false
         switchPlayer()
@@ -150,6 +150,10 @@ function highScoreCalculator () {
 highScoreDisplay()
 }
 
+function playerReset() {
+    turnText.innerHTML = `player 1 turn`;
+    turn = true
+}
 
 reset.addEventListener('click',resetbutton)
 function resetbutton () {
@@ -161,7 +165,8 @@ function resetbutton () {
     arrayGeneration()
     randomizeArray()
     drawBoard()
-    switchPlayer()
+    playerReset()
+    turncount()
 }
 
 
