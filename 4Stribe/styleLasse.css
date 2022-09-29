@@ -24,6 +24,7 @@ body {
 }
 
 .GameContainer4 {
+    margin-top: 150px;
     display: flex;
     flex-grow: 1;
 /*     background-color: lightblue;
@@ -36,7 +37,7 @@ body {
 
 .GameContainer4::after {
     content: '';
-    background-image: url(/img/playingBoard.png);
+    background-image: url(/4Stribe/img/playingBoard.png);
     background-color: transparent;
     pointer-events: none;
     position: absolute;
