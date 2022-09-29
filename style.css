@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    display: grid;
+    place-content: center;
+    background-color: cornflowerblue;
+    height: 80px;
+}
+
+.headerMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.menuiItem {
+    margin: 0 25px;
+    font-family: Montserrat;
+    font-size: 28px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transform: scale(1);
+    transition: transform 250ms ease;
+}
+
+.menuiItem > a {
+    color: cornflowerblue;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.menuiItem:hover {
+    transform: scale(1.05);
+}
