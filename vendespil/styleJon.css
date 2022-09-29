@@ -19,6 +19,7 @@ body {
     grid-template-columns: repeat(10, 3rem);
     grid-template-rows: repeat(10, 3rem);
     grid-gap: 0.5rem;
+    margin-top: 50px;
 }
 .card {
     background-color: blue;
@@ -27,7 +28,6 @@ body {
     align-items: center;
     font-size: 2rem;
     cursor: pointer;
-    color: transparent;
 }
 #player1>h2 {
     text-align: center;

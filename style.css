@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+
+.h1 {
+    font-family: Montserrat;
+    font-size: 36px;
+    text-align: center;
+    color:cornflowerblue;
+}
+
 .header {
     width: 100%;
     display: grid;

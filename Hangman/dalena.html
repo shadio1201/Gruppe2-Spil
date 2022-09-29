@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hangman</title>
-    <link rel="stylesheet" href="stylesheet.css">
-</head>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
 
-<body>
+  <body>
+    <div class="header">
+      <ul class="headerMenu">
+        <li class="menuiItem">
+          <a href="../index.html">Home</a>
+        </li>
+        <li class="menuiItem">
+          <a href="../vendespil/vendespil.html">Vendespillet</a>
+        </li>
+        <li class="menuiItem"><a href="dalena.html">Hangman</a></li>
+        <li class="menuiItem">
+          <a href="../4Stribe/index.html">Fire på stribe</a>
+        </li>
+      </ul>
+    </div>
     <!-- Titel på spillet -->
     <h1>Hangman Game</h1>
 
     <!-- Selve hangman og ordet der skal gættes -->
     <div id="gameContainer">
-
-        <p id="points">points</p>
-        <div id="imageContainer">
-
-            <img class="image" src="img/img6.png">
-
-            <button id="start">Prøv igen</button>
-            <span id="bogstaverContainer"></span>
-        </div>
-
+      <p id="points">points</p>
+      <div id="imageContainer">
+        <img class="image" src="img/img6.png" />
+        <button id="start">Prøv igen</button>
+      </div>
+      <span id="bogstaverContainer"></span>
     </div>
 
     <!-- Tasteturet -->
     <div id="buttons"></div>
-
-
-
-
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>

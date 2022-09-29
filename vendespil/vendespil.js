@@ -1,6 +1,6 @@
 
 var gameboard = document.getElementById('game')
-var card =document.getElementsByClassName('card')
+var card = document.getElementsByClassName('card')
 var highScore = document.getElementById('highScore')
 var player1ScoreHTML = document.getElementById('player1Score')
 var player2ScoreHTML = document.getElementById('player2Score')
@@ -19,63 +19,64 @@ var turn = true
 var storageKey = 'scoreKey'
 var count = 0
 
-function highScoreDisplay(){
-    highScoreHTML.innerHTML= `higscore: ${localStorage.getItem(storageKey)}`;
+function highScoreDisplay() {
+    highScoreHTML.innerHTML = `higscore: ${localStorage.getItem(storageKey)}`;
 }
 highScoreDisplay()
 
-function turncount(){
-    turnCountHTML.innerHTML=`turn: ${count}`
+function turncount() {
+    turnCountHTML.innerHTML = `turn: ${count}`
 }
 turncount()
 
-function arrayGeneration () {
-    for (a=0; a<50; a++) {
+function arrayGeneration() {
+    for (a = 0; a < 50; a++) {
         numberArray.push(a);
         numberArray.push(a);
     }
 }
 arrayGeneration()
-function randomizeArray () {
+function randomizeArray() {
     finalArray = []
-    while(numberArray.length > 0) {
-        let num = Math.random()*numberArray.length; //Generere et tilfældig tal i forhold til mit arrays længde 
+    while (numberArray.length > 0) {
+        let num = Math.random() * numberArray.length; //Generere et tilfældig tal i forhold til mit arrays længde 
         var numRoundedDown = Math.floor(num); //Runder tallet ned til nærmeste hele tal 
-        finalArray.push(numberArray.splice(numRoundedDown,1)[0]);//Putter tallet over i finalarray og gentager derefter processen indtil der ikke er flere tal tilbage i arrayet 
+        finalArray.push(numberArray.splice(numRoundedDown, 1)[0]);//Putter tallet over i finalarray og gentager derefter processen indtil der ikke er flere tal tilbage i arrayet 
     }
 }
 randomizeArray()
 
-function drawBoard () {
-    for(a=0; a<100; a++){
+function drawBoard() {
+    for (a = 0; a < 100; a++) {
         cards = document.createElement('div');//laver kort elementerne
-        cards.className='card';
-        cards.innerHTML = `${finalArray[a]}`;
+        cards.className = 'card';
+        cards.setAttribute('data-number', `${finalArray[a]}`);
+        /* cards.innerHTML = `${finalArray[a]}`; */
         gameboard.appendChild(cards);//Sætter det ind i elementet som et child
     }
     allCards = document.querySelectorAll(".card")
-    Array.from(allCards).forEach(card=> {
-        card.addEventListener('click',cardclick)
+    Array.from(allCards).forEach(card => {
+        card.addEventListener('click', cardclick)
     })
 }
 drawBoard()
-function playerScore () {
-    player1ScoreHTML.innerHTML =`score: ${player1Score}`
-    player2ScoreHTML.innerHTML =`score: ${player2Score}`
+function playerScore() {
+    player1ScoreHTML.innerHTML = `score: ${player1Score}`
+    player2ScoreHTML.innerHTML = `score: ${player2Score}`
 }
 playerScore()
 turnText.innerHTML = `player 1 turn`;
-function switchPlayer () {
+function switchPlayer() {
     if (!turn) {
         player = 'layer1'
         turnText.innerHTML = `player 1 turn`;
         turn = !turn
-        count ++
+        count++
     } else {
         player = 'player2'
         turnText.innerHTML = `player 2 turn`;
         turn = !turn
-        count ++
+        count++
     }
     turncount()
     console.log(turn)
@@ -83,69 +84,82 @@ function switchPlayer () {
 
 let firstValue
 function cardclick(e) {
-    e.target.style.color='black'
+    e.target.innerHTML = `${e.target.dataset.number}`;
+    e.target.style.color = 'black'
     console.log(e.target)
     if (!firstValue) {
         firstValue = e.target
         firstValue.style.pointerEvents = "none"
-        firstValue.style.cursor ="not-allowed"
+        firstValue.style.cursor = "not-allowed"
         //vis første kort
         return
     }
     if (firstValue.innerHTML == e.target.innerHTML) {
         console.log('correct answer')
-        setTimeout(()=> {
+        setTimeout(() => {
             firstValue.style.opacity = "0"
             e.target.style.opacity = "0"
-            e.target.style.pointerEvents ="none"
-            e.target.style.cursor ="not-allowed"
+            e.target.style.pointerEvents = "none"
+            e.target.style.cursor = "not-allowed"
             firstValue.style.pointerEvents = "none"
-            firstValue.style.cursor ="not-allowed"
+            firstValue.style.cursor = "not-allowed"
             firstValue = false;
-            if (turn==true) {
+            if (turn == true) {
                 player1Score++
             }
-            if (turn==false) {
+            if (turn == false) {
                 player2Score++
             }
             playerScore()
             highScoreCalculator()
-            Array.from(allCards).forEach(card=> {
-            card.style.color = "transparent"
+            Array.from(allCards).forEach(card => {
+                card.style.pointerEvents = "none"
             })
-            }, 1000)
+            Array.from(allCards).forEach(card => {
+                card.style.color = "transparent"
+                Array.from(allCards).forEach(card => {
+                    card.style.pointerEvents = "all"
+                })
+            })
+        }, 1000)
     } else {
         console.log('incorrect answer')
         firstValue.style.pointerEvents = "auto"
-        firstValue.style.cursor ="pointer"
-        setTimeout(()=>{Array.from(allCards).forEach(card=> {
-            card.style.color = "transparent"
-        })},1000)
+        firstValue.style.cursor = "pointer"
+        Array.from(allCards).forEach(card => {
+            card.style.pointerEvents = "none"
+        })
+        setTimeout(() => {
+            Array.from(allCards).forEach(card => {
+                card.innerHTML = ""
+                card.style.pointerEvents = "all"
+            })
+        }, 1000)
         firstValue = false
         switchPlayer()
     }
-    
+
 }
-function checkwin () {
-    for (a=0; a<100; a++) {
-        if (card[a].style.opacity != "0" ) {
+function checkwin() {
+    for (a = 0; a < 100; a++) {
+        if (card[a].style.opacity != "0") {
             console.log(allCards[a] + 'true')
             return false
         }
     }
     return true
 }
-function highScoreCalculator () {
+function highScoreCalculator() {
     if (checkwin()) {
         if (player1Score > player2Score) {
-            localStorage.setItem (storageKey, `sidste spil vandt spiler 1 med ${player1Score} stik med ${count} ture`)
+            localStorage.setItem(storageKey, `sidste spil vandt spiler 1 med ${player1Score} stik med ${count} ture`)
         } else if (player1Score == player2Score) {
-            localStorage.setItem (storageKey, `sidste Spil belv ufagjordt med ${player1Score} stik med ${count} ture`)
+            localStorage.setItem(storageKey, `sidste Spil belv ufagjordt med ${player1Score} stik med ${count} ture`)
         } else {
-            localStorage.setItem (storageKey, `sidste spil vandt spiler 2 med ${player2Score} stik med ${count} ture`)
+            localStorage.setItem(storageKey, `sidste spil vandt spiler 2 med ${player2Score} stik med ${count} ture`)
         }
-}
-highScoreDisplay()
+    }
+    highScoreDisplay()
 }
 
 function playerReset() {
@@ -153,13 +167,13 @@ function playerReset() {
     turn = true
 }
 
-reset.addEventListener('click',resetbutton)
-function resetbutton () {
-    gameboard.innerHTML= ""
+reset.addEventListener('click', resetbutton)
+function resetbutton() {
+    gameboard.innerHTML = ""
     count = 0
     player1Score = 0
     player2Score = 0
-    playerScore ()
+    playerScore()
     arrayGeneration()
     randomizeArray()
     drawBoard()

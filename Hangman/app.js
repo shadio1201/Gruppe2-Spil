@@ -85,9 +85,12 @@ for (var i = 0; i < alphabet.length; i++) {
                 }
             }
 
+            e.target.style.pointerEvents = "none";
+            e.target.style.opacity = "0.7";
+
             // Når spilleren vinder: <--------
             if (hiddenWordArray.length == guessWords.length) {
-                document.querySelector('.image').src = "img/win" + ".png";
+                document.querySelector('.image').src = "img/win.png";
             }
         }
 
@@ -101,6 +104,9 @@ for (var i = 0; i < alphabet.length; i++) {
             // billede kommer ikke frem!!!! <----
             if (countLife == 0) {
                 document.querySelector('.image').src = "img/tryagain" + ".png";
+                document.querySelectorAll(".keyboardBtn").forEach(btn => {
+                    btn.style.pointerEvents = "none";
+                })
                 bogstavOnScreen.style.display = "none";
                 startGame.style.display = "block";
             }
