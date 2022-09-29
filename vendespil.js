@@ -137,8 +137,6 @@ function checkwin () {
 }
 function highScoreCalculator () {
     if (checkwin()) {
-        player1Score >= player2Score
-        var key = localStorage.getItem(storageKey)
         if (player1Score > player2Score) {
             localStorage.setItem (storageKey, `sidste spil vandt spiler 1 med ${player1Score} stik med ${count} ture`)
         } else if (player1Score == player2Score) {
