@@ -1,0 +1,34 @@
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(img/table2.jpg);
+
+}
+#sections {
+    display: grid;
+    grid-template-columns: 27rem 39.9rem 27rem;
+    justify-items: center;
+}
+
+#game {
+    display: grid;
+    grid-template-columns: repeat(10, 3rem);
+    grid-template-rows: repeat(10, 3rem);
+    grid-gap: 0.5rem;
+}
+.card {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    /*color: transparent;*/
+}
+#player1>h2 {
+    text-align: center;
+}
+#player2>h2 {
+    text-align: center;
+}
