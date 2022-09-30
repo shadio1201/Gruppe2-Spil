@@ -11,10 +11,21 @@
 }
 
 body {
-    display: grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     gap: 25px;
+}
+
+.messBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    transition: all 250ms ease;
 }
 
 .result {
@@ -33,6 +44,7 @@ body {
     height: 600px;
     position: relative;
     z-index: 10;
+    overflow: hidden;
 }
 
 .GameContainer4::after {
@@ -74,9 +86,9 @@ body {
     content: var(--current);
     opacity: 0.7;
     margin-bottom: 20px;
-    font-size: 65px;
+    font-size: 80px;
     position: absolute;
-    top: -95px;
+    top: -103px;
     animation: var(--animate-wrong);
 }
 
@@ -85,6 +97,7 @@ body {
     position: relative;
     pointer-events: none;
     user-select: none;
+    font-size: 80px;
 }
 
 @keyframes wrongMove {
