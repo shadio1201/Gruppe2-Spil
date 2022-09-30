@@ -243,6 +243,8 @@ const checkWin = (box, currentPlayer) => {
                 if(document.querySelector(`[data-box="${Number(i)}"]`).firstChild == null) {
                     continue;
                 }
+                document.querySelector(".messBox").style.boxShadow = "0 0 0px rgb(0 0 0 / 50%)";
+                document.querySelector(".result").innerText = " "
                 document.querySelector(`[data-box="${Number(i)}"]`).firstChild.style.top = "700px"
                 setTimeout(()=> {
                     location.reload();

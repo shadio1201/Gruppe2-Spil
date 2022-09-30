@@ -16,6 +16,7 @@ body {
     align-items: center;
     height: 100vh;
     gap: 25px;
+    overflow: hidden;
 }
 
 .messBox {
@@ -44,13 +45,13 @@ body {
     height: 600px;
     position: relative;
     z-index: 10;
-    overflow: hidden;
 }
 
 .GameContainer4::after {
     content: '';
     background-image: url(/4Stribe/img/playingBoard.png);
     background-color: transparent;
+    background-repeat: no-repeat;
     pointer-events: none;
     position: absolute;
     top: 0;
